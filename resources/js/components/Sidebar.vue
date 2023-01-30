@@ -12,47 +12,53 @@
             <ul>
                 <!-- The Begin -->
                 <li>
-                    <a href="#">
+                    <router-link :to="{name:'home'}">
                         <span class="icon"><i class="fas fa-home"></i></span>
                         <span>The Dashboard</span>
-                    </a>
+                    </router-link>
                 </li>
                 <!-- The First -->
                 <li>
-                    <a href="#">
+                    <router-link :to="{name:'users'}">
                         <span class="icon"><i class="fas fa-users"></i></span>
                         <span>The Users</span>
-                    </a>
+                    </router-link>
                 </li>
                 <!-- The Second -->
                 <li>
-                    <a href="#">
+                    <router-link :to="{name:'roles'}">
                         <span class="icon"><i class="fas fa-user-shield"></i></span>
                         <span>The Roles</span>
-                    </a>
+                    </router-link>
                 </li>
                 <!-- The Third -->
                 <li>
-                    <a href="#">
+                    <router-link :to="{name:'customers'}">
                         <span class="icon"><i class="fas fa-user-friends"></i></span>
                         <span>The Customers</span>
-                    </a>
+                    </router-link>
                 </li>
                 <!-- The Fourth -->
                 <li>
-                    <a href="#">
+                    <router-link :to="{name:'levels'}">
                         <span class="icon"><i class="fas fa-tachometer-alt"></i></span>
                         <span>The Levels</span>
-                    </a>
+                    </router-link>
                 </li>
                 <!-- The Fith -->
                 <li>
-                    <a href="#">
+                    <router-link :to="{name:'settings'}">
                         <span class="icon"><i class="fas fa-cog"></i></span>
                         <span>The Settings</span>
-                    </a>
+                    </router-link>
                 </li>
                 <!-- The Sixth -->
+                <li>
+                    <router-link :to="{name:'about'}">
+                        <span class="icon"><i class="fas fa-exclamation-circle"></i></span>
+                        <span>The About</span>
+                    </router-link>
+                </li>
             </ul>
         </div>
     </div>

@@ -1,7 +1,7 @@
 <template>      
-        <div class="home">
-            <h3>Hello, Am The Home View</h3>
-            <h5>Je suis la vue : Home</h5>
+        <div class="settings">
+            <h3>Hello, Am The Settings View</h3>
+            <h5>Je suis la vue: Settings</h5>
         </div>
 </template>
 
@@ -14,8 +14,8 @@ export default {
 </script>
 
 <style scoped>
-        .home{
-            background-color: #00a8ff;
+        .settings{
+            background-color: #05c46b;
             color: #fff;
             display: flex;
             flex-direction: column;
