@@ -77,8 +77,9 @@ export default {
 
 <style scoped>
         .users{
-            background-color: #273c75;
-            color: #fff;
+            /* background-color: #273c75; */
+            background-color: #eaeaea;
+            color: #000;
             display: flex;
             flex-direction: column;
            /*  justify-content: center;
@@ -87,27 +88,38 @@ export default {
             padding: 25px;
         }
         .data_box{
-            border: 1px solid red;
+            border: 1px solid #000;
             width: 100%;
-            /* border-radius: 5px; */
+            border-radius: 10px;
+            overflow: hidden;
         }
         .data_box_header{
             margin-bottom: 2px solid #fff;
-            background-color: maroon;
+            background-color: #fff;
+            color: #000;
         }
         .data_box_content{
             background-color: rosybrown;
         }
         .data_box_footer{
-            background-color: magenta;
+            background-color: #fff;
+            color: #000;
+            border-top: 1px solid #000;
         }
         /*****************TABLE-DESIGN*****************/
         table{
             text-align: center;
             width: 100%;
+            border-collapse: collapse;
+            background-color: #fafafa;
+            color: black;
         }
         table thead th{
-            text-transform: capitalize;
-            border: 1px solid red;
+            text-transform: uppercase;
+            background-color: #2f3640;
+            color:#fff;
+        }
+        table th,td{
+            padding: 8px 15px;
         }
 </style>
