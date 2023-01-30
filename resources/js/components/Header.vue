@@ -1,7 +1,7 @@
 <template>      
     <div class="header">
         <div>
-            <h1>Hello, Am The Header Component</h1>
+            <h5>Hello, Am The Header Component</h5>
         </div>
         <Link/>
     </div>
