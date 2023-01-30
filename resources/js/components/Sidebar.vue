@@ -9,54 +9,61 @@
         </div>
         <!-- menu_item_container -->
         <div class="menu_item_container">
-            <ul>
+            <ul id="cri">
                 <!-- The Begin -->
                 <li>
-                    <router-link :to="{name:'home'}">
+                    <router-link :to="{name:'home'}" class="item active">
                         <span class="icon"><i class="fas fa-home"></i></span>
                         <span>The Dashboard</span>
                     </router-link>
                 </li>
                 <!-- The First -->
                 <li>
-                    <router-link :to="{name:'users'}">
+                    <router-link :to="{name:'users'}" class="item">
                         <span class="icon"><i class="fas fa-users"></i></span>
                         <span>The Users</span>
                     </router-link>
                 </li>
                 <!-- The Second -->
                 <li>
-                    <router-link :to="{name:'roles'}">
+                    <router-link :to="{name:'roles'}" class="item">
                         <span class="icon"><i class="fas fa-user-shield"></i></span>
                         <span>The Roles</span>
                     </router-link>
                 </li>
                 <!-- The Third -->
                 <li>
-                    <router-link :to="{name:'customers'}">
+                    <router-link :to="{name:'customers'}" class="item">
                         <span class="icon"><i class="fas fa-user-friends"></i></span>
                         <span>The Customers</span>
                     </router-link>
                 </li>
                 <!-- The Fourth -->
                 <li>
-                    <router-link :to="{name:'levels'}">
+                    <router-link :to="{name:'levels'}" class="item">
                         <span class="icon"><i class="fas fa-tachometer-alt"></i></span>
                         <span>The Levels</span>
                     </router-link>
                 </li>
                 <!-- The Fith -->
                 <li>
-                    <router-link :to="{name:'settings'}">
+                    <router-link :to="{name:'settings'}" class="item">
                         <span class="icon"><i class="fas fa-cog"></i></span>
                         <span>The Settings</span>
                     </router-link>
                 </li>
                 <!-- The Sixth -->
                 <li>
-                    <router-link :to="{name:'about'}">
+                    <router-link :to="{name:'about'}" class="item">
                         <span class="icon"><i class="fas fa-exclamation-circle"></i></span>
                         <span>The About</span>
+                    </router-link>
+                </li>
+                <!-- The Seventh -->
+                <li>
+                    <router-link :to="{name:'about'}" class="item">
+                        <span class="icon"><i class="fas fa-power-off"></i></span>
+                        <span>The Logout</span>
                     </router-link>
                 </li>
             </ul>
@@ -65,9 +72,17 @@
 </template>
 
 <script>
+import { onMounted } from '@vue/runtime-core'
 export default {
     setup() {
-        
+        onMounted(()=>{
+            console.log("Hello from onMounted !!!")
+        })
+        const makeActive = ()=>{
+           /*  alert("Hello")
+            console.log("Valeur de e:",e.target) */
+        }
+        return {makeActive}
     },
 }
 </script>
@@ -103,6 +118,15 @@ export default {
         list-style-type: none;
         padding-left: 0;
     }
+    .menu_item_container ul li:first-child{
+        /* background-color: #fff; */
+        border-top: 1px solid #2f3640;
+    }
+    .menu_item_container ul li a.active{
+        /* background-color: #f00; */
+        border: 1px solid #fff;
+        border-radius: 5px;
+    }
     .menu_item_container ul li{
         /* border: 1px solid violet; */
         /* padding: 10px 15px; */
@@ -121,6 +145,6 @@ export default {
     }
     .menu_item_container ul li .icon{
         width: 30px;
-        
+
     }
 </style>
