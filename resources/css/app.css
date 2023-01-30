@@ -37,21 +37,19 @@
     left: 0;
     width: 250px;
     height: 100%;
-    border: 2px solid #c23616;
+   /*  border: 2px solid #c23616; */
     transition: all 0.5s ease;
     background-color: #dedede;
 }    
 /************************HERE-IS-THE-SECTION-BEGIN************************/
 .content{
-
     /* display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center; */
-    
     width: calc(100% -250px);
     margin-left:250px;
-    border: 2px dotted green;
+   /*  border: 2px dotted green; */
    
 }
 
