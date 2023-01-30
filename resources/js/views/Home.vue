@@ -1,6 +1,7 @@
 <template>      
         <div class="home">
             <h3>Hello, Am The Home Component</h3>
+            <h5>Je suis un composant: le Home</h5>
         </div>
 </template>
 
