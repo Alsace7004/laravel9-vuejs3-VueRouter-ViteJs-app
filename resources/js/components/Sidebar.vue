@@ -74,7 +74,7 @@ export default {
 
 <style scoped>
     .sidebar_logo_container{
-        border: 1px solid red;
+        /* border: 1px solid red; */
         display: flex;
         justify-content: space-evenly;
         align-items: center;
@@ -93,25 +93,27 @@ export default {
     }
     /*****************MENU-ITEM-CONTAINER*****************/
     .menu_item_container{
-        border: 1px solid yellow;
+        /* border: 1px solid yellow; */
         background-color: #484a4c;
         height: 100%;
+        padding-top: 1px;
     }
     .menu_item_container ul{
-        border: 1px solid red;
+        /* border: 1px solid red; */
         list-style-type: none;
         padding-left: 0;
     }
     .menu_item_container ul li{
-        border: 1px solid violet;
+        /* border: 1px solid violet; */
         /* padding: 10px 15px; */
     }
     .menu_item_container ul li a{
-        border: 1px solid rgb(10, 10, 243);
+        /* border: 1px solid rgb(10, 10, 243); */
         padding: 10px 15px;
         display: flex;
         color: #eee;
         transition: all 0.5s ease;
+        border-bottom: 1px solid #2f3640;
     }
     .menu_item_container ul li a:hover{
         color: #fff;
@@ -119,5 +121,6 @@ export default {
     }
     .menu_item_container ul li .icon{
         width: 30px;
+        
     }
 </style>

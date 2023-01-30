@@ -3,15 +3,14 @@
         <div>
             <h5>Hello, Am The Header Component</h5>
         </div>
-        <Link/>
     </div>
 </template>
 
 <script>
-import Link from "../components/Link.vue"
+//import Link from "../components/Link.vue"
 export default {
     components:{
-        Link
+        //Link
     },
     setup() {
         
