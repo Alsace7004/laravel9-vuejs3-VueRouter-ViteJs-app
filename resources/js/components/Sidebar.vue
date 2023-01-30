@@ -13,43 +13,43 @@
                 <!-- The Begin -->
                 <li>
                     <a href="#">
-                        <span><i class="fas fa-home"></i></span>
-                        <span>The Home</span>
+                        <span class="icon"><i class="fas fa-home"></i></span>
+                        <span>The Dashboard</span>
                     </a>
                 </li>
                 <!-- The First -->
                 <li>
                     <a href="#">
-                        <span><i class="fas fa-home"></i></span>
-                        <span>The First</span>
+                        <span class="icon"><i class="fas fa-users"></i></span>
+                        <span>The Users</span>
                     </a>
                 </li>
                 <!-- The Second -->
                 <li>
                     <a href="#">
-                        <span><i class="fas fa-home"></i></span>
-                        <span>The Second</span>
+                        <span class="icon"><i class="fas fa-user-shield"></i></span>
+                        <span>The Roles</span>
                     </a>
                 </li>
                 <!-- The Third -->
                 <li>
                     <a href="#">
-                        <span><i class="fas fa-home"></i></span>
-                        <span>The Third</span>
+                        <span class="icon"><i class="fas fa-user-friends"></i></span>
+                        <span>The Customers</span>
                     </a>
                 </li>
                 <!-- The Fourth -->
                 <li>
                     <a href="#">
-                        <span><i class="fas fa-home"></i></span>
-                        <span>The Fourth</span>
+                        <span class="icon"><i class="fas fa-tachometer-alt"></i></span>
+                        <span>The Levels</span>
                     </a>
                 </li>
                 <!-- The Fith -->
                 <li>
                     <a href="#">
-                        <span><i class="fas fa-home"></i></span>
-                        <span>The Fifth</span>
+                        <span class="icon"><i class="fas fa-cog"></i></span>
+                        <span>The Settings</span>
                     </a>
                 </li>
                 <!-- The Sixth -->
@@ -73,19 +73,23 @@ export default {
         justify-content: space-evenly;
         align-items: center;
         height: 100px;
+        background-color: #2f3640;
     }
     .sidebar_logo{
         height:65px;
         width: 65px;
-        background: #4e4e4e;;
+        background: #eee;;
         border-radius: 50%;
     }
     .sidebar_title{
         font-weight: bold;
+        color: #eee;
     }
     /*****************MENU-ITEM-CONTAINER*****************/
     .menu_item_container{
         border: 1px solid yellow;
+        background-color: #484a4c;
+        height: 100%;
     }
     .menu_item_container ul{
         border: 1px solid red;
@@ -94,6 +98,20 @@ export default {
     }
     .menu_item_container ul li{
         border: 1px solid violet;
+        /* padding: 10px 15px; */
+    }
+    .menu_item_container ul li a{
+        border: 1px solid rgb(10, 10, 243);
         padding: 10px 15px;
+        display: flex;
+        color: #eee;
+        transition: all 0.5s ease;
+    }
+    .menu_item_container ul li a:hover{
+        color: #fff;
+        margin-left: 10px;
+    }
+    .menu_item_container ul li .icon{
+        width: 30px;
     }
 </style>
