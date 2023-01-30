@@ -17,10 +17,17 @@ console.log("Hello from js_files")
 /*************************************************************** */
 /*************************************************************** */
 let items = document.querySelectorAll('.item')
-console.log("Valeur des items:",items)
+//console.log("Valeur des items:",items)
 items.forEach(item=>{
     item.addEventListener('click',function (){
         items.forEach(it=>it.classList.remove('active'))
         this.classList.add('active')
     })
+})
+
+/*************************************************************/
+let ic = document.querySelector(".icon_container")
+ic.addEventListener('click',()=>{
+    //alert("begin collapse")
+    document.querySelector('body').classList.toggle('collapse')
 })

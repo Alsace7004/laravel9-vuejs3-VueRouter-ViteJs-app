@@ -6,6 +6,7 @@ import Role from "../views/Roles.vue";
 import Custumer from "../views/Custumers.vue";
 import Level from "../views/Levels.vue";
 import Settings from "../views/Settings.vue";
+import Logout from "../views/Logout.vue";
 import NotFound from "../components/NotFound.vue";
 const routes = [
     {
@@ -42,6 +43,11 @@ const routes = [
         path:"/settings",
         name:'settings',
         component:Settings,
+    },
+    {
+        path:'/logout',
+        name:'logout',
+        component:Logout,
     },
     {
         path:'/:pathMatch(.*)*',

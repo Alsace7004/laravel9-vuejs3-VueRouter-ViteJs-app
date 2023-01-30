@@ -1,8 +1,14 @@
 <template>      
     <div class="header">
+        <!--  -->
+        <div class="icon_container">
+            <i class="fas fa-bars"></i>
+        </div>
+        <!--  -->
         <div>
             <h5>Hello, Am The Header Component</h5>
         </div>
+        <!--  -->
     </div>
 </template>
 
@@ -19,5 +25,10 @@ export default {
 </script>
 
 <style scoped>
-
+    .icon_container{
+        cursor: pointer;
+        /* border: 1px solid red; */
+        
+        font-size: 20px;
+    }
 </style>

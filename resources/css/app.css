@@ -2,8 +2,8 @@
         background-color: #2f3640;
         color: #fff;
         display: flex;
-        flex-direction: column;
-        justify-content: center;
+        flex-direction: row;
+        justify-content: space-between;
         align-items: center;
         height: 100px;
         /*border: 1px solid red;*/
@@ -49,9 +49,16 @@
     align-items: center; */
     width: calc(100% -250px);
     margin-left:250px;
+    transition: all 0.5s ease;
    /*  border: 2px dotted green; */
    
 }
-
-
+/*************************COLLAPSE-SIDE-BAR*************************/
+body.collapse .sidebar {
+    left: -250px;
+}
+body.collapse .content {
+    margin-left: 0px;
+   
+}
     

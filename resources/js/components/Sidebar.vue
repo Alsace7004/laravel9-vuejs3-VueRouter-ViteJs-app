@@ -5,7 +5,7 @@
             <div class="sidebar_logo">
                 <img src="" alt="" srcset="">
             </div>
-            <div class="sidebar_title">Ayao EDJODJINAM</div>
+            <div class="sidebar_title">Ayao EDJODJINAM <!-- Mégadénam --></div>
         </div>
         <!-- menu_item_container -->
         <div class="menu_item_container">
@@ -61,7 +61,7 @@
                 </li>
                 <!-- The Seventh -->
                 <li>
-                    <router-link :to="{name:'about'}" class="item">
+                    <router-link :to="{name:'logout'}" class="item">
                         <span class="icon"><i class="fas fa-power-off"></i></span>
                         <span>The Logout</span>
                     </router-link>
@@ -127,10 +127,10 @@ export default {
         border: 1px solid #fff;
         border-radius: 5px;
     }
-    .menu_item_container ul li{
-        /* border: 1px solid violet; */
-        /* padding: 10px 15px; */
-    }
+    /* .menu_item_container ul li{
+        border: 1px solid violet;
+        padding: 10px 15px; 
+    } */
     .menu_item_container ul li a{
         /* border: 1px solid rgb(10, 10, 243); */
         padding: 10px 15px;
@@ -141,7 +141,8 @@ export default {
     }
     .menu_item_container ul li a:hover{
         color: #fff;
-        margin-left: 10px;
+        /* margin-left: 10px; */
+        padding-left: 10px;
     }
     .menu_item_container ul li .icon{
         width: 30px;
