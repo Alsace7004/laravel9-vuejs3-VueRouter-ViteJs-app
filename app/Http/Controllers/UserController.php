@@ -14,15 +14,27 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        $users = DB::table('users')->paginate(4);
+        $searchValue = $request->input('search');
+        //$users = DB::table('users')->paginate(4);
+        $query = User::query()->select('id','name','email','created_at');
+        if($searchValue){
+            $query->where(function($query) use ($searchValue){
+                $query->where('name','like','%'.$searchValue.'%')
+                    ->orWhere('email','like','%'.$searchValue.'%');
+            });
+        }
         //$users = User::paginate(10);
         //dd($users);
-        return response()->json([
+        /*return response()->json([
             'status'=>true,
             'users'=>$users
+        ]);*/
+        return response()->json([
+            'status'=>true,
+            'users'=>$query->paginate(4)
         ]);
     }
 

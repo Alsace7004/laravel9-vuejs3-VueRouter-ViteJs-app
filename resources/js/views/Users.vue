@@ -4,7 +4,12 @@
             <h5>Je suis la vue: User</h5>
 
             <div class="data_box">
-                <div class="data_box_header">The data box header</div>
+                <div class="data_box_header">
+                    <div class="add_btn">The data box header</div>
+                    <div class="search_btn">
+                        <input type="text" class="input_control" v-model="tData.search" @input="getSearch" placeholder="Rechercher nom,prenom...">
+                    </div>
+                </div>
                 <!-- Table Content Begin -->
                 <div class="data_box_content">
                     <!-- The data box content -->
@@ -128,11 +133,11 @@
 </template>
 
 <script setup>
-import { onMounted } from "@vue/runtime-core"
+import { onMounted, reactive } from "@vue/runtime-core"
 import {ref} from "vue";
 
     let users = ref([])
-
+    /*********************************/
     let current_page    = ref('')
     let last_page       = ref('')
     let last_page_url   = ref('')
@@ -141,7 +146,11 @@ import {ref} from "vue";
     let from            = ref('')
     let to              = ref('')
     let total           = ref('')
-    
+    /*********************************/
+    const tData = reactive({
+        search : ''
+    })
+    /*********************************/
     const goPrev = (ppu)=>{
         //alert("The NPU is:"+ppu)
         axios.get(ppu).then((res)=>{
@@ -174,7 +183,7 @@ import {ref} from "vue";
     const getAllUsers = ()=>{
         axios.get("api/users").then((res)=>{
             let content = res.data.users
-            console.log("Valeur de content:",content)
+            //console.log("Valeur de content:",content)
             //console.log("Valeur de res:",res.data.users)
             users.value = res.data.users.data
             configPagination(content)
@@ -194,6 +203,18 @@ import {ref} from "vue";
         to.value              = data.to
         total.value           = data.total
     }
+
+    const getSearch = ()=>{
+        axios.get("api/users",{params:tData}).then((res)=>{
+            let content = res.data.users
+            users.value = res.data.users.data
+            configPagination(content)
+        }).catch((err)=>{
+            console.log("Valeur de err dans getSearch:",err)
+        })
+    }
+
+    
 </script>
 
 <style scoped>
@@ -281,5 +302,21 @@ import {ref} from "vue";
             justify-content: center;
             align-items: center;
             cursor: pointer;
+        }
+        /****************DATA-BOX-HEADER****************/
+        .data_box_header{
+            display: flex;
+            justify-content: space-between;
+        }
+        .search_btn{
+            border: 1px solid #2f3640;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .input_control{
+            /* border: 1px dashed seagreen; */
+            outline: none;
+            padding: 5px 14px;
+           
         }
 </style>
