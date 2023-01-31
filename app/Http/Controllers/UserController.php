@@ -18,6 +18,7 @@ class UserController extends Controller
     {
         //
         $searchValue = $request->input('search');
+        $length = $request->input('length');
         //$users = DB::table('users')->paginate(4);
         $query = User::query()->select('id','name','email','created_at');
         if($searchValue){
@@ -34,7 +35,7 @@ class UserController extends Controller
         ]);*/
         return response()->json([
             'status'=>true,
-            'users'=>$query->paginate(4)
+            'users'=>$query->paginate($length)
         ]);
     }
 

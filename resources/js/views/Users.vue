@@ -5,7 +5,14 @@
 
             <div class="data_box">
                 <div class="data_box_header">
-                    <div class="add_btn">The data box header</div>
+                    <div class="add_btn">
+                        <select name="" id="" v-model="tData.length" @change="getPerPage">
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
+                        </select>
+                    </div>
                     <div class="search_btn">
                         <input type="text" class="input_control" v-model="tData.search" @input="getSearch" placeholder="Rechercher nom,prenom...">
                     </div>
@@ -148,7 +155,8 @@ import {ref} from "vue";
     let total           = ref('')
     /*********************************/
     const tData = reactive({
-        search : ''
+        search :'',
+        length :'5',
     })
     /*********************************/
     const goPrev = (ppu)=>{
@@ -181,7 +189,7 @@ import {ref} from "vue";
             return  date.toLocaleDateString('en-GB') // "day-month-year"
     }
     const getAllUsers = ()=>{
-        axios.get("api/users").then((res)=>{
+        axios.get("api/users",{params:tData}).then((res)=>{
             let content = res.data.users
             //console.log("Valeur de content:",content)
             //console.log("Valeur de res:",res.data.users)
@@ -205,13 +213,11 @@ import {ref} from "vue";
     }
 
     const getSearch = ()=>{
-        axios.get("api/users",{params:tData}).then((res)=>{
-            let content = res.data.users
-            users.value = res.data.users.data
-            configPagination(content)
-        }).catch((err)=>{
-            console.log("Valeur de err dans getSearch:",err)
-        })
+        getAllUsers()
+    }
+
+    const getPerPage = ()=>{
+        getAllUsers()
     }
 
     
