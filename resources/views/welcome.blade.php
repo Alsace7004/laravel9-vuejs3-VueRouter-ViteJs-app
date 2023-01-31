@@ -134,6 +134,7 @@
         <div id="app"></div>      
         
         @vite(['resources/js/app.js'])
+        {{-- My dashboard Js File --}}
         @vite(['resources/js/js_files.js'])
     </body>
 </html>

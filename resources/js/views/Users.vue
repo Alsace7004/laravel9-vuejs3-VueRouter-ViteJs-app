@@ -97,6 +97,7 @@ export default {
             margin-bottom: 2px solid #fff;
             background-color: #fff;
             color: #000;
+            padding: 8px 15px;
         }
         .data_box_content{
             background-color: rosybrown;
@@ -105,6 +106,7 @@ export default {
             background-color: #fff;
             color: #000;
             border-top: 1px solid #000;
+            padding: 8px 15px;
         }
         /*****************TABLE-DESIGN*****************/
         table{
