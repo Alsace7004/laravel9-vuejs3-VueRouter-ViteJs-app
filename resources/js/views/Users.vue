@@ -13,10 +13,17 @@
                             <th>#</th>
                             <th>Nom</th>
                             <th>Prenom</th>
-                            <th>Action</th>
+                            <th>Ajouté le</th>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr v-if="!users.length">Pas d'utilisateur disponible pour le moment</tr>
+                            <tr v-for="(user,key) in users" :key="key">
+                                <td>{{key+=1}}</td>
+                                <td>{{user.name}}</td>
+                                <td>{{user.email}}</td>
+                                <td>{{convert(user.created_at)}}</td>
+                            </tr>
+                            <!-- <tr>
                                 <td>01</td>
                                 <td>Kodjo</td>
                                 <td>Mawugnon</td>
@@ -57,22 +64,126 @@
                                 <td>Kossi</td>
                                 <td>Alla</td>
                                 <td>Deuxieme</td>
+                            </tr> -->
+                            <!-- Second waves -->
+                            <!-- <tr>
+                                <td>08</td>
+                                <td>Kodjo</td>
+                                <td>Mawugnon</td>
+                                <td>Deuxieme</td>
                             </tr>
+                            <tr>
+                                <td>09</td>
+                                <td>Komlan</td>
+                                <td>Mawuegnigan</td>
+                                <td>Premier</td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>Kokou</td>
+                                <td>Okeke</td>
+                                <td>Deuxieme</td>
+                            </tr>
+                            <tr>
+                                <td>11</td>
+                                <td>Yao</td>
+                                <td>Mawulolo</td>
+                                <td>Premier</td>
+                            </tr>
+                            <tr>
+                                <td>12</td>
+                                <td>Koffi</td>
+                                <td>Selom</td>
+                                <td>Deuxieme</td>
+                            </tr>
+                            <tr>
+                                <td>13</td>
+                                <td>Komi</td>
+                                <td>Esse</td>
+                                <td>Premier</td>
+                            </tr>
+                            <tr>
+                                <td>14</td>
+                                <td>Kossi</td>
+                                <td>Alla</td>
+                                <td>Deuxieme</td>
+                            </tr> -->
+                            <!-- Third waves -->
+                            <!-- Fourth waves -->
                         </tbody>
                     </table>
                 </div>
                 <!-- Table Content End -->
-                <div class="data_box_footer">The data box footer</div>
+                <div class="data_box_footer">
+                    <div class="show_entries">
+                        ({{from}}-{{to}} sur {{total}})
+                    </div>
+                    <div class="pagination_btns">
+                        <div class="prev_btn" @click="goPrev(prev_page_url)">-</div>
+                        <div class="next_btn" @click="goNext(next_page_url)">+</div>
+                    </div>
+                </div>
             </div>
         </div>
 </template>
 
-<script>
-export default {
-    setup() {
-        
-    },
-}
+<script setup>
+import { onMounted } from "@vue/runtime-core"
+import {ref} from "vue";
+
+    let users = ref([])
+
+    let current_page    = ref('')
+    let last_page       = ref('')
+    let last_page_url   = ref('')
+    let next_page_url   = ref('')
+    let prev_page_url   = ref('')
+    let from            = ref('')
+    let to              = ref('')
+    let total           = ref('')
+    
+    const goPrev = (ppu)=>alert("The NPU is:"+ppu)
+    const goNext = (npu)=>{
+        //alert("The PPU is:"+npu)
+        axios.get(npu).then((res)=>{
+            console.log("Valeur de res dans goNext:",res)
+            let content = res.data.users
+            users.value = content.data
+            configPagination(content)
+        }).catch((err)=>{
+            console.log("Valeur de err dans goNext:",err)
+        })
+    }
+    onMounted(()=>{
+        getAllUsers()
+    })
+    const convert=(jour)=>{
+            let  date =  new Date(jour);
+            return  date.toLocaleDateString('en-GB') // "day-month-year"
+    }
+    const getAllUsers = ()=>{
+        axios.get("api/users").then((res)=>{
+            let content = res.data.users
+            console.log("Valeur de content:",content)
+            //console.log("Valeur de res:",res.data.users)
+            users.value = res.data.users.data
+            configPagination(content)
+        }).catch((err)=>{
+            console.log("Valeur de err:",err)
+        })
+    }
+
+    const configPagination=(data)=>{
+        //console.log("Valeur de data dans configPagination:",data)
+        current_page.value    = data.current_page
+        last_page.value       = data.last_page
+        last_page_url.value   = data.last_page_url
+        next_page_url.value   = data.next_page_url
+        prev_page_url.value   = data.prev_page_url
+        from.value            = data.from
+        to.value              = data.to
+        total.value           = data.total
+    }
 </script>
 
 <style scoped>
@@ -84,7 +195,7 @@ export default {
             flex-direction: column;
            /*  justify-content: center;
             align-items: center; */
-            height: 86.45vh;
+            /* height: 86.45vh; */
             padding: 25px;
         }
         .data_box{
@@ -123,5 +234,42 @@ export default {
         }
         table th,td{
             padding: 8px 15px;
+        }
+
+        /*************************BOX-DATA-FOOTER**************************/
+        .data_box_footer{
+            display: flex;
+            justify-content: space-between;
+        }
+        /* .show_entries{
+            border: 1px solid red;
+        } */
+        /* .pagination_btns{
+            border: 1px solid dodgerblue; 
+        } */
+        .pagination_btns{
+            width: 3.5rem;
+            display: flex;
+            justify-content: space-between;
+        }
+        .prev_btn{
+            border: 2px solid red;
+            height: 25px;
+            width: 25px;
+            border-radius: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        .next_btn{
+            border: 2px solid #000;
+            height: 25px;
+            width: 25px;
+            border-radius: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
         }
 </style>
