@@ -119,8 +119,8 @@
                         ({{from}}-{{to}} sur {{total}})
                     </div>
                     <div class="pagination_btns">
-                        <div class="prev_btn" @click="goPrev(prev_page_url)">-</div>
-                        <div class="next_btn" @click="goNext(next_page_url)">+</div>
+                        <div class="prev_btn" v-if="prev_page_url" @click="goPrev(prev_page_url)">-</div>
+                        <div class="next_btn" v-if="next_page_url" @click="goNext(next_page_url)">+</div>
                     </div>
                 </div>
             </div>
@@ -142,11 +142,21 @@ import {ref} from "vue";
     let to              = ref('')
     let total           = ref('')
     
-    const goPrev = (ppu)=>alert("The NPU is:"+ppu)
+    const goPrev = (ppu)=>{
+        //alert("The NPU is:"+ppu)
+        axios.get(ppu).then((res)=>{
+            //console.log("Valeur de res dans goNext:",res)
+            let content = res.data.users
+            users.value = content.data
+            configPagination(content)
+        }).catch((err)=>{
+            console.log("Valeur de err dans goNext:",err)
+        })
+    }
     const goNext = (npu)=>{
         //alert("The PPU is:"+npu)
         axios.get(npu).then((res)=>{
-            console.log("Valeur de res dans goNext:",res)
+            //console.log("Valeur de res dans goNext:",res)
             let content = res.data.users
             users.value = content.data
             configPagination(content)

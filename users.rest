@@ -1,3 +1,11 @@
 ### GET ALL USERS
 GET http://localhost:8000/api/users
-### 
+### ADD NEW USER
+POST http://localhost:8000/api/users
+Content-Type: application/json
+
+{
+    "name":"Duro Jaiye",
+    "email":"Duro@Jaiye.com",
+    "password":"123456789"
+}
