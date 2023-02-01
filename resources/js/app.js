@@ -11,7 +11,7 @@ import router from './router';
  //import 'vue-loading-overlay/dist/vue-loading.min.css';
   import {useLoading} from 'vue-loading-overlay'
  //import {LoadingPlugin} from 'vue-loading-overlay';
- import 'vue-loading-overlay/dist/css/index.css';
+import 'vue-loading-overlay/dist/css/index.css';
 
     
     /* const $loading = LoadingPlugin({

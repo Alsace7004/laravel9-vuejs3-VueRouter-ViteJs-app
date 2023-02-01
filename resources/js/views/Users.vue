@@ -189,7 +189,7 @@ import {ref} from "vue";
     /*********************************/
     const goPrev = (ppu)=>{
         //alert("The NPU is:"+ppu)
-        axios.get(ppu).then((res)=>{
+        axios.get(ppu,{params:tData}).then((res)=>{
             //console.log("Valeur de res dans goNext:",res)
             let content = res.data.users
             users.value = content.data
@@ -200,7 +200,7 @@ import {ref} from "vue";
     }
     const goNext = (npu)=>{
         //alert("The PPU is:"+npu)
-        axios.get(npu).then((res)=>{
+        axios.get(npu,{params:tData}).then((res)=>{
             //console.log("Valeur de res dans goNext:",res)
             let content = res.data.users
             users.value = content.data

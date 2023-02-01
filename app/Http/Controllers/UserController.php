@@ -17,6 +17,7 @@ class UserController extends Controller
     public function index(Request $request)
     {
         //
+        //dd($request->all());
         $searchValue = $request->input('search');
         $length = $request->input('length');
         //$users = DB::table('users')->paginate(4);
@@ -35,7 +36,7 @@ class UserController extends Controller
         ]);*/
         return response()->json([
             'status'=>true,
-            'users'=>$query->paginate(4)
+            'users'=>$query->paginate($length)
         ]);
     }
 
