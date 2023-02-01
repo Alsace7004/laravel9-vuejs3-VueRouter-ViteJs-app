@@ -21,7 +21,7 @@ class UserController extends Controller
         $searchValue = $request->input('search');
         $length = $request->input('length');
         //$users = DB::table('users')->paginate(4);
-        $query = User::query()->select('id','name','email','created_at');
+        $query = User::query()->select('id','name','email','created_at')->orderBy('id','desc');
         if($searchValue){
             $query->where(function($query) use ($searchValue){
                 $query->where('name','like','%'.$searchValue.'%')
