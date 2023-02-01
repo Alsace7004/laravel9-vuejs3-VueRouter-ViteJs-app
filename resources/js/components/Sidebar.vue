@@ -12,7 +12,7 @@
             <ul id="cri">
                 <!-- The Begin -->
                 <li>
-                    <router-link :to="{name:'home'}" class="item active">
+                    <router-link :to="{name:'home'}" class="item">
                         <span class="icon"><i class="fas fa-home"></i></span>
                         <span>The Dashboard</span>
                     </router-link>

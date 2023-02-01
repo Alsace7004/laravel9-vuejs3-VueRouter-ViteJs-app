@@ -15,10 +15,11 @@
 
             <div class="data_box">
                 <div class="data_box_header">
-                    <div class="add_btn">
-                        <select name="" id="" v-model="tData.length" @change="getPerPage">
+                    <div class="option_btns">
+                        <select name="" class="sort_per_page" id="" v-model="tData.length" @change="getPerPage">
                             <option v-for="(pp,key) in perPage" :key="key" :value="pp">{{pp}}</option>
                         </select>
+                        <button class="excel_export_btn" @click="export_to_excel">Excel</button>
                     </div>
                     <div class="search_btn">
                         <input type="text" class="input_control" v-model="tData.search" @input="getSearch" placeholder="Rechercher nom,prenom...">
@@ -249,6 +250,10 @@ import {ref} from "vue";
         getAllUsers()
     }
 
+    const export_to_excel = ()=>{
+        alert("going to export to excel")
+    }
+
     
 </script>
 
@@ -353,5 +358,26 @@ import {ref} from "vue";
             outline: none;
             padding: 5px 14px;
            
+        }
+        /*************option_btns*********************************************************/
+        .sort_per_page{
+            padding: 5px 14px;
+            border-radius: 5px;
+        }
+        .option_btns{
+            /* border: 1px solid red; */
+        }
+        .excel_export_btn{
+            /* border: 1px solid gold; */
+            margin-left: 1rem;
+            padding: 5px 14px;
+            border-radius: 5px;
+            background-color: #2f3640;
+            color: #fff;
+            font-weight: 900;
+            cursor: pointer;
+        }   
+        .excel_export_btn:hover{
+            box-shadow: -5px 0px 6px -1px rgba(0,0,0,1);
         }
 </style>
