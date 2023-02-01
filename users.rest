@@ -5,7 +5,7 @@ POST http://localhost:8000/api/users
 Content-Type: application/json
 
 {
-    "name":"Okuta",
-    "email":"Abe@Okuta.com",
+    "name":"Adebayo",
+    "email":"Adebayo@Ishola.com",
     "password":"123456789"
 }

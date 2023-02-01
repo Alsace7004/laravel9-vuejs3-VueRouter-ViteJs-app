@@ -391,6 +391,6 @@ import {ref} from "vue";
             cursor: pointer;
         }   
         .excel_export_btn:hover{
-            box-shadow: 0px 2px 15px 6px #000000;
+            box-shadow: 0px 2px 15px 1px #000;
         }
 </style>

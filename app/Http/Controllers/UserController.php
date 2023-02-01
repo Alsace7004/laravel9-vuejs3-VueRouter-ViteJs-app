@@ -105,7 +105,7 @@ class UserController extends Controller
 
     public function exportUsers(Request $request){
             $searchValue = $request->input('search');
-            $length = $request->input('length');
+            //$length = $request->input('length');
 
             $query = User::query()->select('id','name','email','created_at');
             $export = new UsersExport([
@@ -119,6 +119,7 @@ class UserController extends Controller
                     })->get()
                 ]);
             }
+
             return Excel::download($export, 'users.xlsx');
     }
 }
