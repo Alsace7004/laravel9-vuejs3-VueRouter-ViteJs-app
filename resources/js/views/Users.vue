@@ -1,5 +1,15 @@
 <template>      
         <div class="users">
+
+            <!-- <loading v-model:active="isLoading"
+                :can-cancel="true"
+                :on-cancel="onCancel"
+                :is-full-page="fullPage"
+            /> -->
+            <!-- <loading :active="isLoading" 
+                :can-cancel="true" 
+                :on-cancel="onCancel"
+                :is-full-page="fullPage"></loading> -->
             <h3>Hello, Am The User View</h3>
             <h5>Je suis la vue: User</h5>
 
@@ -7,10 +17,7 @@
                 <div class="data_box_header">
                     <div class="add_btn">
                         <select name="" id="" v-model="tData.length" @change="getPerPage">
-                            <option value="5">5</option>
-                            <option value="10">10</option>
-                            <option value="20">20</option>
-                            <option value="30">30</option>
+                            <option v-for="(pp,key) in perPage" :key="key" :value="pp">{{pp}}</option>
                         </select>
                     </div>
                     <div class="search_btn">
@@ -142,7 +149,26 @@
 <script setup>
 import { onMounted, reactive } from "@vue/runtime-core"
 import {ref} from "vue";
-
+    //import Loading from 'vue-loading-overlay';
+    /**************************************************/
+    /* import Loading from 'vue-loading-overlay';
+    //import {useLoading} from 'vue-loading-overlay'
+    import 'vue-loading-overlay/dist/css/index.css';
+            const isLoading = ref(false);
+            const fullPage = ref(true);
+            const doAjax=() => {
+                isLoading.value = true;
+                // simulate AJAX
+                setTimeout(() => {
+                  isLoading = false
+                },1000)
+            } 
+            const onCancel= ()=> {
+              console.log('User cancelled the loader.');
+              //because the props is single flow direction, you need to set isLoading status normally.
+              isLoading.value = false;
+            } */
+    /**************************************************/
     let users = ref([])
     /*********************************/
     let current_page    = ref('')
@@ -153,6 +179,8 @@ import {ref} from "vue";
     let from            = ref('')
     let to              = ref('')
     let total           = ref('')
+
+    let perPage = ref(['5','10','20','30'])
     /*********************************/
     const tData = reactive({
         search :'',
@@ -183,6 +211,7 @@ import {ref} from "vue";
     }
     onMounted(()=>{
         getAllUsers()
+          
     })
     const convert=(jour)=>{
             let  date =  new Date(jour);
@@ -226,7 +255,7 @@ import {ref} from "vue";
 <style scoped>
         .users{
             /* background-color: #273c75; */
-            background-color: #eaeaea;
+            /* background-color: #eaeaea; */
             color: #000;
             display: flex;
             flex-direction: column;

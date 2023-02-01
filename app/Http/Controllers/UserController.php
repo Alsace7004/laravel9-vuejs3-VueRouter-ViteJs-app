@@ -35,7 +35,7 @@ class UserController extends Controller
         ]);*/
         return response()->json([
             'status'=>true,
-            'users'=>$query->paginate($length)
+            'users'=>$query->paginate(4)
         ]);
     }
 
