@@ -257,11 +257,11 @@ import {ref} from "vue";
             var fileURL = window.URL.createObjectURL(new Blob([data]));
             var fileLink = document.createElement('a');
             fileLink.href = fileURL;
-            fileLink.setAttribute('download', 'olayemi_from_vue.xlsx');//final excel file name
+            fileLink.setAttribute('download', 'users_file_from_vue.xlsx');//final excel file name
             document.body.appendChild(fileLink);
             fileLink.click(); 
 
-            console.log("Valeur de data dans export_to_excel:",data)
+            //console.log("Valeur de data dans export_to_excel:",data)
         }).catch((err)=>{
             console.log("Valeur de err dans export_to_excel:",err)
         })
@@ -392,5 +392,6 @@ import {ref} from "vue";
         }   
         .excel_export_btn:hover{
             box-shadow: 0px 2px 15px 1px #000;
+            
         }
 </style>
