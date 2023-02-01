@@ -251,7 +251,20 @@ import {ref} from "vue";
     }
 
     const export_to_excel = ()=>{
-        alert("going to export to excel")
+        //alert("going to export to excel")
+        axios.get("api/holla",{params:tData,responseType: 'arraybuffer'}).then((res)=>{
+            let data = res.data
+            var fileURL = window.URL.createObjectURL(new Blob([data]));
+            var fileLink = document.createElement('a');
+            fileLink.href = fileURL;
+            fileLink.setAttribute('download', 'olayemi_from_vue.xlsx');//final excel file name
+            document.body.appendChild(fileLink);
+            fileLink.click(); 
+
+            console.log("Valeur de data dans export_to_excel:",data)
+        }).catch((err)=>{
+            console.log("Valeur de err dans export_to_excel:",err)
+        })
     }
 
     
@@ -378,6 +391,6 @@ import {ref} from "vue";
             cursor: pointer;
         }   
         .excel_export_btn:hover{
-            box-shadow: -5px 0px 6px -1px rgba(0,0,0,1);
+            box-shadow: 10px -1px 17px 6px rgba(0,0,0,0.75);
         }
 </style>

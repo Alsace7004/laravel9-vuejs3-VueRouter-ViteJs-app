@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Exports\UsersExport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
@@ -104,5 +106,13 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function exportUsers(Request $request){
+            $query = User::query()->select('id','name','email','created_at');
+            $export = new UsersExport([
+                $query->get()
+            ]);
+            return Excel::download($export, 'users.xlsx');
     }
 }

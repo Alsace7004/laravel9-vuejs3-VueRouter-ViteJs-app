@@ -1,8 +1,11 @@
 <?php
 
-use App\Http\Controllers\UserController;
+use App\Models\User;
+use App\Exports\UsersExport;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +23,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('users',UserController::class);
+//Route::get('users/expor',[UserController::class,'exportUser']);
+Route::get("holla",[UserController::class,'exportUsers']);
