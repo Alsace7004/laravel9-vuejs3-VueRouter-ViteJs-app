@@ -34,6 +34,7 @@
                             <th>Nom</th>
                             <th>Prenom</th>
                             <th>Ajouté le</th>
+                            <th>Action</th>
                         </thead>
                         <tbody>
                             <tr v-if="!users.length">Pas d'utilisateur disponible pour le moment</tr>
@@ -42,6 +43,9 @@
                                 <td>{{user.name}}</td>
                                 <td>{{user.email}}</td>
                                 <td>{{convert(user.created_at)}}</td>
+                                <td>
+                                    <a href="" @click.prevent="deleteUser(user.id)"><i class="fas fa-trash"></i></a>
+                                </td>
                             </tr>
                             <!-- <tr>
                                 <td>01</td>
@@ -267,6 +271,28 @@ import {ref} from "vue";
         })
     }
 
+    const deleteUser=(id)=>{
+        Swal.fire({
+            title: 'Etes-vous sûr?'+id,
+            text: "Vous ne pourrez pas annuler cette action !!!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'Annuler!',
+            confirmButtonText: 'Oui, supprimez-le!'
+            }).then((result) => {
+            if (result.isConfirmed) {
+                    axios.delete(`api/users/${id}`).then((res)=>{
+                        Swal.fire('Supprimé!','L\'utilisateur a été supprimé.','success') 
+                    }).catch((err)=>{
+                        Swal.fire('Erreur !!!',"Une erreur s'est produite !!!",'error')
+                    })
+            }else{
+                Swal.fire('Annuler !!!',"L'utilisateur est toujours disponible !!!",'error')
+            }
+        })
+    }
     
 </script>
 
@@ -394,4 +420,5 @@ import {ref} from "vue";
             box-shadow: 0px 2px 15px 1px #000;
             
         }
+        /********************************DELETE-BTN********************************/
 </style>

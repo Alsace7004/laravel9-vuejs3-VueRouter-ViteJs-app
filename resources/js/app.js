@@ -3,22 +3,14 @@ import './bootstrap';
 import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
-/************************************************/
-
- //Form Loading
- //import Loading from 'vue-loading-overlay';
- //Import stylesheet
- //import 'vue-loading-overlay/dist/vue-loading.min.css';
-  import {useLoading} from 'vue-loading-overlay'
- //import {LoadingPlugin} from 'vue-loading-overlay';
+/****************SWEET-ALERT-CONFIG-BEGIN*********************************/
+// ES6 Modules or TypeScript
+import Swal from 'sweetalert2'
+import 'sweetalert2/dist/sweetalert2.min.css';
+window.Swal = Swal
+/****************SWEET-ALERT-CONFIG-END*********************************/
+import {useLoading} from 'vue-loading-overlay'
 import 'vue-loading-overlay/dist/css/index.css';
-
-    
-    /* const $loading = LoadingPlugin({
-        // options
-    }); */
-//Vue.use(Loading);
-//console.log("Je suis executé depuis app js !!!")
 /************************************************************/
 //let loader = useLoading();
         const $loading = useLoading({
