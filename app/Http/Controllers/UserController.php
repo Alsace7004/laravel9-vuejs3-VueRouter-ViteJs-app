@@ -22,7 +22,7 @@ class UserController extends Controller
         //dd($request->all());
         $searchValue = $request->input('search');
         $length = $request->input('length');
-        //$users = DB::table('users')->paginate(4);
+
         $query = User::query()->select('id','name','email','created_at')->orderBy('id','desc');
         if($searchValue){
             $query->where(function($query) use ($searchValue){
@@ -30,12 +30,7 @@ class UserController extends Controller
                     ->orWhere('email','like','%'.$searchValue.'%');
             });
         }
-        //$users = User::paginate(10);
-        //dd($users);
-        /*return response()->json([
-            'status'=>true,
-            'users'=>$users
-        ]);*/
+
         return response()->json([
             'status'=>true,
             'users'=>$query->paginate($length)
@@ -109,10 +104,21 @@ class UserController extends Controller
     }
 
     public function exportUsers(Request $request){
+            $searchValue = $request->input('search');
+            $length = $request->input('length');
+
             $query = User::query()->select('id','name','email','created_at');
             $export = new UsersExport([
                 $query->get()
             ]);
+            if(!is_null($searchValue)){
+                $export = new UsersExport([
+                    $query->where(function($query) use ($searchValue){
+                        $query->where('name','like','%'.$searchValue.'%')
+                            ->orWhere('email','like','%'.$searchValue.'%');
+                    })->get()
+                ]);
+            }
             return Excel::download($export, 'users.xlsx');
     }
 }
