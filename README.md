@@ -9,17 +9,19 @@
 
 ## A Propos de Cette Application
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Une Application utilisan la vertion 9 de laravel, la version 3 de vue et quelques autres package.
+C'est une application sensé etre une sorte de template pour demarer les projets d'administration que
+l'on voudrait developper grace aux technologie Laravel et Vue combiné, le projet va contenir entre autre:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- Une datatable made from scratch.
+- La datatable va gerer la recherche dynamique depuis une base de données.
+- La datatable va gerer les paginations dynamique depuis une base de données.
+- La datatable va gerer une sortPerPage***, affichage des data de la table en quantité de 10 ou 20 ou 30.
+- Une fonctionalité pour exporter des informations d'une datatable dans un fichier excel.
+- Un Custum modal made from scratch.
+- L'utilisation du Custum Modal.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Vous avez en gros les point clés qui ont été mise en place sur l'application en question.
 
 ## Learning Laravel
 
