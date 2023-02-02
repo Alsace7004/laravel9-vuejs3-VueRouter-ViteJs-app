@@ -23,11 +23,17 @@ class UserController extends Controller
         $searchValue = $request->input('search');
         $length = $request->input('length');
 
-        $query = User::query()->select('id','name','email','created_at')->orderBy('id','desc');
+        $query = User::query()->select('id','name','email','created_at')
+                                ->where('is_deleted','=',false)
+                                ->orderBy('id','desc');
+
         if($searchValue){
             $query->where(function($query) use ($searchValue){
                 $query->where('name','like','%'.$searchValue.'%')
-                    ->orWhere('email','like','%'.$searchValue.'%');
+                        ->orWhere(function($statement) use ($searchValue){
+                            $statement->Where('email','like','%'.$searchValue.'%')
+                            ->where('is_deleted','=',false);
+                        });
             });
         }
 
@@ -100,14 +106,25 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //dd($id);
+        $user = User::query()->where('id','=',$id)->first();
+        if($user){
+            $user->is_deleted = true;
+            if($user->save()){
+                return ['status'=>true];
+            }
+            return ['status'=>false];
+        }
+        return ['status'=>false];
     }
 
     public function exportUsers(Request $request){
             $searchValue = $request->input('search');
             //$length = $request->input('length');
 
-            $query = User::query()->select('id','name','email','created_at');
+            $query = User::query()->select('id','name','email','created_at')
+                                    ->where('is_deleted','=',false)
+                                    ->orderBy('id','desc');
             $export = new UsersExport([
                 $query->get()
             ]);
@@ -115,11 +132,33 @@ class UserController extends Controller
                 $export = new UsersExport([
                     $query->where(function($query) use ($searchValue){
                         $query->where('name','like','%'.$searchValue.'%')
-                            ->orWhere('email','like','%'.$searchValue.'%');
+                            ->orWhere(function($statement) use ($searchValue){
+                                $statement->Where('email','like','%'.$searchValue.'%')
+                                ->where('is_deleted','=',false);
+                        });
                     })->get()
                 ]);
             }
 
             return Excel::download($export, 'users.xlsx');
+    }
+
+    //See After : Clean Code
+    public function index2(Request $request){
+      
+        $length = $request->input('length');
+        $searchValue = $request->input('search');
+        return User::query()
+            ->select('id','name','perc','agency')
+            ->where('is_deleted','=', false)
+            ->when($searchValue ?? null, function ($query) use ($searchValue) {
+                $query->where('name', 'like', "%$searchValue%")
+                    ->orWhere(function($statement) use ($searchValue) {
+                        $statement->where('agency','like', "%$searchValue%")
+                        ->where('is_deleted','=', false);
+                    });
+            })->orderBy('id','desc')
+            ->paginate($length);
+    
     }
 }

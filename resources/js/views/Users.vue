@@ -10,6 +10,27 @@
                 :can-cancel="true" 
                 :on-cancel="onCancel"
                 :is-full-page="fullPage"></loading> -->
+                <!-- <button @click="$refs.modalName.openModal()">Open modal</button>-->
+                <button @click="modalName.openModal()">Open modal</button>
+            <!-- Modal Begin -->
+            <modal ref="modalName" >
+                <template v-slot:header>
+                    <h1>Modal title</h1>
+                </template>
+
+                <template v-slot:body>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nunc sed velit dignissim sodales ut eu sem integer vitae. Id aliquet lectus proin nibh nisl condimentum. Fringilla urna porttitor rhoncus dolor purus. Nam aliquam sem et tortor. Nisl vel pretium lectus quam id. Cras pulvinar mattis nunc sed. Quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci. Tristique magna sit amet purus. Fermentum et sollicitudin ac orci phasellus egestas tellus. Erat pellentesque adipiscing commodo elit at imperdiet dui accumsan. Felis eget nunc lobortis mattis aliquam faucibus. Tincidunt eget nullam non nisi est sit amet facilisis. Mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Vitae proin sagittis nisl rhoncus mattis rhoncus urna neque. Eget nunc scelerisque viverra mauris in aliquam sem fringilla ut. Nec nam aliquam sem et tortor consequat id. Commodo nulla facilisi nullam vehicula ipsum a. Elementum tempus egestas sed sed. Faucibus purus in massa tempor nec feugiat nisl pretium fusce.</p>
+                    <p>Arcu cursus vitae congue mauris rhoncus aenean. Tempor id eu nisl nunc mi. Pharetra diam sit amet nisl suscipit adipiscing bibendum. Ut faucibus pulvinar elementum integer enim. Odio facilisis mauris sit amet massa vitae tortor condimentum lacinia. Eu non diam phasellus vestibulum lorem sed risus. Porttitor rhoncus dolor purus non enim praesent. Sit amet mauris commodo quis imperdiet. Lobortis feugiat vivamus at augue eget. Nibh tellus molestie nunc non blandit. Tellus mauris a diam maecenas sed enim ut. Tortor aliquam nulla facilisi cras fermentum odio eu feugiat pretium. Mattis aliquam faucibus purus in massa.</p>
+                </template>
+
+                <template v-slot:footer>
+                    <div>
+                        <button @click="modalName.closeModal()">Cancel</button>
+                        <button @click="modalName.closeModal()">Save</button>
+                    </div>
+                </template>
+            </modal>
+            <!-- Modal End -->
             <h3>Hello, Am The User View</h3>
             <h5>Je suis la vue: User</h5>
 
@@ -153,26 +174,12 @@
 
 <script setup>
 import { onMounted, reactive } from "@vue/runtime-core"
-import {ref} from "vue";
-    //import Loading from 'vue-loading-overlay';
+import {ref} from "vue"
+import Modal from "../components/Modal.vue"
+
+    
     /**************************************************/
-    /* import Loading from 'vue-loading-overlay';
-    //import {useLoading} from 'vue-loading-overlay'
-    import 'vue-loading-overlay/dist/css/index.css';
-            const isLoading = ref(false);
-            const fullPage = ref(true);
-            const doAjax=() => {
-                isLoading.value = true;
-                // simulate AJAX
-                setTimeout(() => {
-                  isLoading = false
-                },1000)
-            } 
-            const onCancel= ()=> {
-              console.log('User cancelled the loader.');
-              //because the props is single flow direction, you need to set isLoading status normally.
-              isLoading.value = false;
-            } */
+    let modalName = ref(null)
     /**************************************************/
     let users = ref([])
     /*********************************/
@@ -186,6 +193,8 @@ import {ref} from "vue";
     let total           = ref('')
 
     let perPage = ref(['5','10','20','30'])
+    /*********************************/
+      //let show = ref(false)
     /*********************************/
     const tData = reactive({
         search :'',
@@ -216,7 +225,7 @@ import {ref} from "vue";
     }
     onMounted(()=>{
         getAllUsers()
-          
+        console.log("Valeur du red du modal:",modalName.value)
     })
     const convert=(jour)=>{
             let  date =  new Date(jour);
@@ -285,14 +294,17 @@ import {ref} from "vue";
             if (result.isConfirmed) {
                     axios.delete(`api/users/${id}`).then((res)=>{
                         Swal.fire('Supprimé!','L\'utilisateur a été supprimé.','success') 
+                        getAllUsers()
                     }).catch((err)=>{
                         Swal.fire('Erreur !!!',"Une erreur s'est produite !!!",'error')
                     })
             }else{
-                Swal.fire('Annuler !!!',"L'utilisateur est toujours disponible !!!",'error')
+                Swal.fire('Conserver !!!',"L'utilisateur est toujours disponible !!!",'success')
             }
         })
     }
+   
+    
     
 </script>
 
