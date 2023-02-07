@@ -60,8 +60,8 @@ import 'vue-loading-overlay/dist/css/index.css';
                 
         })
 /************************************************************/
-const app = Vue.createApp({})
-app.component('GDialog',GDialog)
+const app = createApp(App)
+app.component('GDialog',GDialog) //Here is a Global Component
 app.use(useLoading)
    .use(router)
    .mount("#app");
