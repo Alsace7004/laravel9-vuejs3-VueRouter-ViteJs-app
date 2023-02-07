@@ -1,7 +1,7 @@
 <template>      
     <transition name="fade">
 
-        <div class="modal" :id="modalName">
+        <div class="modal" >
 
                 <div class="modal__backdrop" @click="closeModal()"/>
 
@@ -36,25 +36,30 @@
     import {onMounted, ref} from "vue";
     //import Link from "../components/Link.vue"
     const props = defineProps({
-        modalName:{
-            type:String,
-        }   
+        modalName: {
+            type: String,
+        }
     })
     let show = ref(false)
-    let modalName = ref(null)
-    
+    //let modalName = ref(null)
+
     onMounted(()=>{
-        modalName.value = 'Updated title!'
-        console.log("Valeur de modalName.value:",modalName.value)
+        console.log("From Modale.vue, everything correct !!!")
+        //modalName.value = 'Updated title!'
+        //console.log("Valeur de modalName.value:",modalName.value)
     })
     const closeModal = ()=>{
         show.value = false
-        document.querySelector(body).classList.remove("overflow-hidden")
+        alert("going to close you")
+        document.querySelector('body').classList.remove("overflow-hidden")
     }
     const openModal = ()=>{
         show.value = true
-        document.querySelector(body).classList.add("overflow-hidden")
+        alert("going to open you")
+        document.querySelector('body').classList.add("overflow-hidden")
     }
+
+    defineExpose({openModal,closeModal})
 </script>
 
 <style  scoped>

@@ -8,7 +8,11 @@ import router from './router';
 import Swal from 'sweetalert2'
 import 'sweetalert2/dist/sweetalert2.min.css';
 window.Swal = Swal
-/****************SWEET-ALERT-CONFIG-END*********************************/
+/****************SWEET-ALERT-CONFIG-BEGIN*********************************/
+/****************GITART-VUE-DIALOG-CONFIG-BEGIN***************************/
+import 'gitart-vue-dialog/dist/style.css'
+import { GDialog } from 'gitart-vue-dialog'
+/****************GITART-VUE-DIALOG-CONFIG-END*****************************/
 import {useLoading} from 'vue-loading-overlay'
 import 'vue-loading-overlay/dist/css/index.css';
 /************************************************************/
@@ -56,7 +60,8 @@ import 'vue-loading-overlay/dist/css/index.css';
                 
         })
 /************************************************************/
-createApp(App)
-        .use(useLoading)
-        .use(router)
-        .mount("#app");
+const app = Vue.createApp({})
+app.component('GDialog',GDialog)
+app.use(useLoading)
+   .use(router)
+   .mount("#app");

@@ -13,6 +13,7 @@
     },
     "dependencies": {
         "@vitejs/plugin-vue": "^4.0.0",
+        "gitart-vue-dialog": "^2.4.1",
         "sweetalert2": "^11.7.1",
         "vue": "^3.2.36",
         "vue-loading-overlay": "6.0",

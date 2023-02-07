@@ -10,12 +10,12 @@
                 :can-cancel="true" 
                 :on-cancel="onCancel"
                 :is-full-page="fullPage"></loading> -->
-                <!-- <button @click="$refs.modalName.openModal()">Open modal</button>-->
+                
                 
             
             <h3>Hello, Am The User View</h3>
             <h5>Je suis la vue: User</h5>
-
+<button class="excel_export_btn" @click="modalName.value.openModal()">Open modal</button>
             <div class="data_box">
                 <div class="data_box_header">
                     <div class="option_btns">
@@ -151,6 +151,15 @@
                     </div>
                 </div>
             </div>
+
+            <GDialog v-model="dialogState">
+                Content 
+            </GDialog>
+
+            <button @click="dialogState = true">
+                Open Dialog
+            </button>
+    
         </div>
 </template>
 
@@ -161,7 +170,7 @@ import Modal from "../components/Modal.vue"
 
     
     /**************************************************/
-    let modalName = ref(null)
+    const modalName = ref()
     /**************************************************/
     let users = ref([])
     /*********************************/
