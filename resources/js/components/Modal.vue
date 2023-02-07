@@ -1,7 +1,7 @@
 <template>      
     <transition name="fade">
 
-        <div class="modal" v-if="show">
+        <div class="modal" :id="modalName">
 
                 <div class="modal__backdrop" @click="closeModal()"/>
 
@@ -35,8 +35,14 @@
 <script setup>
     import {onMounted, ref} from "vue";
     //import Link from "../components/Link.vue"
+    const props = defineProps({
+        modalName:{
+            type:String,
+        }   
+    })
     let show = ref(false)
     let modalName = ref(null)
+    
     onMounted(()=>{
         modalName.value = 'Updated title!'
         console.log("Valeur de modalName.value:",modalName.value)
