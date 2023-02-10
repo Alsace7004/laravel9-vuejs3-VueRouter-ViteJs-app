@@ -1,0 +1,17 @@
+
+
+table{
+    text-align: center;
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fafafa;
+    color: black;
+}
+table thead th{
+    text-transform: uppercase;
+    background-color: #2f3640;
+    color:#fff;
+}
+table th,td{
+    padding: 8px 15px;
+}

@@ -1,0 +1,98 @@
+
+.data_box{
+    border: 1px solid #000;
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.data_box_header{
+    margin-bottom: 2px solid #fff;
+    background-color: #fff;
+    color: #000;
+    padding: 8px 15px;
+}
+.data_box_content{
+    background-color: rosybrown;
+}
+.data_box_footer{
+    background-color: #fff;
+    color: #000;
+    border-top: 1px solid #000;
+    padding: 8px 15px;
+}
+/*****************TABLE-DESIGN*****************/
+
+
+/*************************BOX-DATA-FOOTER**************************/
+.data_box_footer{
+    display: flex;
+    justify-content: space-between;
+}
+/* .show_entries{
+    border: 1px solid red;
+} */
+/* .pagination_btns{
+    border: 1px solid dodgerblue; 
+} */
+.pagination_btns{
+    width: 3.5rem;
+    display: flex;
+    justify-content: space-between;
+}
+.prev_btn{
+    border: 2px solid red;
+    height: 25px;
+    width: 25px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.next_btn{
+    border: 2px solid #000;
+    height: 25px;
+    width: 25px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+/****************DATA-BOX-HEADER****************/
+.data_box_header{
+    display: flex;
+    justify-content: space-between;
+}
+.search_btn{
+    border: 1px solid #2f3640;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.input_control{
+    /* border: 1px dashed seagreen; */
+    outline: none;
+    padding: 5px 14px;
+   
+}
+/*************option_btns*********************************************************/
+.sort_per_page{
+    padding: 5px 14px;
+    border-radius: 5px;
+}
+/* .option_btns{
+ border: 1px solid red; 
+} */
+.excel_export_btn{
+    /* border: 1px solid gold; */
+    margin-left: 1rem;
+    padding: 5px 14px;
+    border-radius: 5px;
+    background-color: #2f3640;
+    color: #fff;
+    font-weight: 900;
+    cursor: pointer;
+}   
+.excel_export_btn:hover{
+    box-shadow: 0px 2px 15px 1px #000;
+}

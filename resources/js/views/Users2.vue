@@ -37,6 +37,114 @@
                             </tr>
                         </tbody>
                     </v-table>
+                    <table>
+                        <thead>
+                            <th>#</th>
+                            <th>Nom</th>
+                            <th>Prenom</th>
+                            <th>Ajouté le</th>
+                            <th>Action</th>
+                        </thead>
+                        <tbody>
+                            <tr v-if="!users.length">Pas d'utilisateur disponible pour le moment</tr>
+                            <tr v-for="(user,key) in users" :key="key">
+                                <td>{{key+=1}}</td>
+                                <td>{{user.name}}</td>
+                                <td>{{user.email}}</td>
+                                <td>{{convert(user.created_at)}}</td>
+                                <td>
+                                    <a href="" @click.prevent="deleteUser(user.id)"><i class="fas fa-trash"></i></a>
+                                </td>
+                            </tr>
+                            <!-- <tr>
+                                <td>01</td>
+                                <td>Kodjo</td>
+                                <td>Mawugnon</td>
+                                <td>Deuxieme</td>
+                            </tr>
+                            <tr>
+                                <td>02</td>
+                                <td>Komlan</td>
+                                <td>Mawuegnigan</td>
+                                <td>Premier</td>
+                            </tr>
+                            <tr>
+                                <td>03</td>
+                                <td>Kokou</td>
+                                <td>Okeke</td>
+                                <td>Deuxieme</td>
+                            </tr>
+                            <tr>
+                                <td>04</td>
+                                <td>Yao</td>
+                                <td>Mawulolo</td>
+                                <td>Premier</td>
+                            </tr>
+                            <tr>
+                                <td>05</td>
+                                <td>Koffi</td>
+                                <td>Selom</td>
+                                <td>Deuxieme</td>
+                            </tr>
+                            <tr>
+                                <td>06</td>
+                                <td>Komi</td>
+                                <td>Esse</td>
+                                <td>Premier</td>
+                            </tr>
+                            <tr>
+                                <td>07</td>
+                                <td>Kossi</td>
+                                <td>Alla</td>
+                                <td>Deuxieme</td>
+                            </tr> -->
+                            <!-- Second waves -->
+                            <!-- <tr>
+                                <td>08</td>
+                                <td>Kodjo</td>
+                                <td>Mawugnon</td>
+                                <td>Deuxieme</td>
+                            </tr>
+                            <tr>
+                                <td>09</td>
+                                <td>Komlan</td>
+                                <td>Mawuegnigan</td>
+                                <td>Premier</td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>Kokou</td>
+                                <td>Okeke</td>
+                                <td>Deuxieme</td>
+                            </tr>
+                            <tr>
+                                <td>11</td>
+                                <td>Yao</td>
+                                <td>Mawulolo</td>
+                                <td>Premier</td>
+                            </tr>
+                            <tr>
+                                <td>12</td>
+                                <td>Koffi</td>
+                                <td>Selom</td>
+                                <td>Deuxieme</td>
+                            </tr>
+                            <tr>
+                                <td>13</td>
+                                <td>Komi</td>
+                                <td>Esse</td>
+                                <td>Premier</td>
+                            </tr>
+                            <tr>
+                                <td>14</td>
+                                <td>Kossi</td>
+                                <td>Alla</td>
+                                <td>Deuxieme</td>
+                            </tr> -->
+                            <!-- Third waves -->
+                            <!-- Fourth waves -->
+                        </tbody>
+                    </table>
                 </div>
                 <!-- Table Content End -->
                 <div class="data_box_footer">
@@ -238,7 +346,7 @@ import ProperModal from "../components/ProperModal.vue"
 
     const deleteUser=(id)=>{
         Swal.fire({
-            title: 'Etes-vous sûr?',
+            title: 'Etes-vous sûr?'+id,
             text: "Vous ne pourrez pas annuler cette action !!!",
             icon: 'warning',
             showCancelButton: true,
@@ -265,6 +373,7 @@ import ProperModal from "../components/ProperModal.vue"
 </script>
 
 <style scoped>
+    @import url("../../css/GDialogModal.css");
         .users{
             /* background-color: #273c75; */
             /* background-color: #eaeaea; */
@@ -276,7 +385,117 @@ import ProperModal from "../components/ProperModal.vue"
             /* height: 86.45vh; */
             padding: 25px;
         }
-        
+        .data_box{
+            border: 1px solid #000;
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .data_box_header{
+            margin-bottom: 2px solid #fff;
+            background-color: #fff;
+            color: #000;
+            padding: 8px 15px;
+        }
+        .data_box_content{
+            background-color: rosybrown;
+        }
+        .data_box_footer{
+            background-color: #fff;
+            color: #000;
+            border-top: 1px solid #000;
+            padding: 8px 15px;
+        }
+        /*****************TABLE-DESIGN*****************/
+        table{
+            text-align: center;
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fafafa;
+            color: black;
+        }
+        table thead th{
+            text-transform: uppercase;
+            background-color: #2f3640;
+            color:#fff;
+        }
+        table th,td{
+            padding: 8px 15px;
+        }
+
+        /*************************BOX-DATA-FOOTER**************************/
+        .data_box_footer{
+            display: flex;
+            justify-content: space-between;
+        }
+        /* .show_entries{
+            border: 1px solid red;
+        } */
+        /* .pagination_btns{
+            border: 1px solid dodgerblue; 
+        } */
+        .pagination_btns{
+            width: 3.5rem;
+            display: flex;
+            justify-content: space-between;
+        }
+        .prev_btn{
+            border: 2px solid red;
+            height: 25px;
+            width: 25px;
+            border-radius: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        .next_btn{
+            border: 2px solid #000;
+            height: 25px;
+            width: 25px;
+            border-radius: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        /****************DATA-BOX-HEADER****************/
+        .data_box_header{
+            display: flex;
+            justify-content: space-between;
+        }
+        .search_btn{
+            border: 1px solid #2f3640;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .input_control{
+            /* border: 1px dashed seagreen; */
+            outline: none;
+            padding: 5px 14px;
+           
+        }
+        /*************option_btns*********************************************************/
+        .sort_per_page{
+            padding: 5px 14px;
+            border-radius: 5px;
+        }
+        /* .option_btns{
+         border: 1px solid red; 
+        } */
+        .excel_export_btn{
+            /* border: 1px solid gold; */
+            margin-left: 1rem;
+            padding: 5px 14px;
+            border-radius: 5px;
+            background-color: #2f3640;
+            color: #fff;
+            font-weight: 900;
+            cursor: pointer;
+        }   
+        .excel_export_btn:hover{
+            box-shadow: 0px 2px 15px 1px #000;
+        }
         /********************************DELETE-BTN********************************/
         .mdl-btn-danger{
             margin-left: 1rem;

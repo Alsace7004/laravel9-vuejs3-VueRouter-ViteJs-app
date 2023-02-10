@@ -1,4 +1,8 @@
-    .header{
+   @import url("./dataBox.css"); /*Table Container Style*/
+   @import url("./table.css");  /*Table Style*/
+   @import url("./GDialogModal.css"); /*GDoalogModal Style*/
+   
+   .header{
         background-color: #2f3640;
         color: #fff;
         display: flex;
