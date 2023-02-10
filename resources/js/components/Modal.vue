@@ -63,5 +63,5 @@
 </script>
 
 <style  scoped>
-    @import url("./style.scss");
+    @import url("../../css/style.scss");
 </style>

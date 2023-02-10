@@ -15,7 +15,11 @@
             
             <h3>Hello, Am The User View</h3>
             <h5>Je suis la vue: User</h5>
-            <button class="excel_export_btn" @click="showModal">Show Modal</button>
+            <div style="margin-bottom:1rem">
+                <button class="excel_export_btn" @click="showModal">Show Modal</button>
+                <button class="excel_export_btn" @click="dialogState = true">Open Dialog</button>
+            </div>
+            
             <div class="data_box">
                 <div class="data_box_header">
                     <div class="option_btns">
@@ -207,9 +211,7 @@
                     </div>
                 </div> 
             </GDialog>
-            <button @click="dialogState = true">
-                Open Dialog
-            </button>
+            
             <!-- GDialog Modal Begin -->
         </div>
 </template>
@@ -361,7 +363,7 @@ import ProperModal from "../components/ProperModal.vue"
 </script>
 
 <style scoped>
-@import url("../components/GDialogModal.css");
+    @import url("../../css/GDialogModal.css");
         .users{
             /* background-color: #273c75; */
             /* background-color: #eaeaea; */
