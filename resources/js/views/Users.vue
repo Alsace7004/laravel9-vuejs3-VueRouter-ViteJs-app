@@ -9,6 +9,7 @@
             </div>
             
             <div class="data_box">
+                <!-- data box header -->
                 <div class="data_box_header">
                     <div class="option_btns">
                         <select name="" class="sort_per_page" id="" v-model="tData.length" @change="getPerPage">
@@ -39,6 +40,7 @@
                     </v-table>
                 </div>
                 <!-- Table Content End -->
+                <!-- data box footer -->
                 <div class="data_box_footer">
                     <div class="show_entries">
                         ({{from}}-{{to}} sur {{total}})
@@ -48,6 +50,7 @@
                         <div class="next_btn" v-if="next_page_url" @click="goNext(next_page_url)">+</div>
                     </div>
                 </div>
+                <!-- data box footer -->
             </div>
             <!-- Proper Modal Begin -->
             <proper-modal v-show="isModalVisible">
@@ -113,7 +116,7 @@
 <script setup>
 import { onMounted, reactive } from "@vue/runtime-core"
 import {ref} from "vue"
-import vTable from "../components/vTable.vue"
+import vTable from "../components/vTable/vTable.vue"
 import Modal from "../components/Modal.vue"
 import ProperModal from "../components/ProperModal.vue"
     /****************GDialog*****Begin*****************/
@@ -135,14 +138,12 @@ import ProperModal from "../components/ProperModal.vue"
 
     let perPage = ref(['5','10','20','30'])
     let columns =[
-        {label:'~#',name:''},
-        {label:'Nom',name:''},
-        {label:'Email',name:''},
-        {label:'Ajouté Le',name:''},
-        {label:'Actions',name:''},
+        {label:'~#',name:'id'},
+        {label:'Nom',name:'nom'},
+        {label:'Email',name:'email'},
+        {label:'Ajouté Le',name:'created_at'},
+        {label:'Actions',name:'actions'},
     ]
-    /*********************************/
-      //let show = ref(false)
     /*********************************/
     const tData = reactive({
         search :'',
