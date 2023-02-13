@@ -1,8 +1,6 @@
 <template>      
         <div class="users">
-            
-            <h3>Hello, Am The User View</h3>
-            <h5>Je suis la vue: User</h5>
+            <h3>Users</h3>
             <div style="margin-bottom:1rem">
                 <button class="excel_export_btn" @click="showModal">Show Modal</button>
                 <button class="excel_export_btn" @click="dialogState = true">Open Dialog</button>
