@@ -32,25 +32,32 @@
 
 <style scoped>
 .modal{
+    
+    background-color: rgba(0, 0, 0, 0.3);
+    
+}
+.modal-dialog{
     position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: rgba(0, 0, 0, 0.3);
     display: flex;
     justify-content: center;
     align-items: center;
-}
-.modal-dialog{
-    background: #fff;
+    background: rgba(0, 0, 0, 0.3);
     box-shadow: 4px 4px 30px 2px;
     overflow-x: auto;
     display: flex;
     flex-direction: column;
 }
 .modal-content{
+    background: #fff;
     border: 1px solid red;
+    max-width: 640px;
+    width: 80%;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px;
+      border-radius: 5px;
 }
 .modal-header{
     border: 1px solid green;
