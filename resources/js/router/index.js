@@ -1,5 +1,5 @@
 import {createRouter,createWebHistory} from "vue-router";
-import Home from "../views/Home.vue";
+/* import Home from "../views/Home.vue";
 import About from "../views/About.vue";
 import User from "../views/Users.vue";
 import Role from "../views/Roles.vue";
@@ -7,52 +7,52 @@ import Custumer from "../views/Custumers.vue";
 import Level from "../views/Levels.vue";
 import Settings from "../views/Settings.vue";
 import Logout from "../views/Logout.vue";
-import NotFound from "../components/NotFound.vue";
+import NotFound from "../components/NotFound.vue"; */
 const routes = [
     {
         path:'/',
         name:'home',
-        component:Home
+        component:()=>import("../views/Home.vue")
     },
     {
         path:'/about',
         name:'about',
-        component:About
+        component:()=>import("../views/About.vue")
     },
     {
         path:'/users',
         name:'users',
-        component:User,
+        component:()=>import("../views/Users.vue"),
     },
     {
         path:'/roles',
         name:'roles',
-        component:Role,
+        component:()=>import("../views/Roles.vue"),
     },
     {
         path:'/customers',
         name:'customers',
-        component:Custumer,
+        component:()=>import("../views/Custumers.vue"),
     },
     {
         path:'/levels',
         name:'levels',
-        component:Level,
+        component:()=>import("../views/Levels.vue"),
     },
     {
         path:"/settings",
         name:'settings',
-        component:Settings,
+        component:()=>import("../views/Settings.vue"),
     },
     {
         path:'/logout',
         name:'logout',
-        component:Logout,
+        component:()=>import("../views/Logout.vue"),
     },
     {
         path:'/:pathMatch(.*)*',
         name:'NotFound',
-        component:NotFound
+        component:()=>import("../components/NotFound.vue")
     }
 ];
 
