@@ -1,0 +1,14 @@
+### GET ALL ROLES
+GET http://localhost:8002/api/roles
+### ADD NEW ROLE
+POST http://localhost:8002/api/roles
+Content-Type: application/json
+
+{
+    "name":"leader",
+    "guard_name":"web",
+    "permission":1
+}
+
+### for permissions
+GET http://localhost:8004/permi

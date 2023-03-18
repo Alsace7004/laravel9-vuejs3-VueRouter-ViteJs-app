@@ -30,6 +30,12 @@ class CreatePermissionTables extends Migration
             $table->string('name');       // For MySQL 8.0 use string('name', 125);
             $table->string('guard_name'); // For MySQL 8.0 use string('guard_name', 125);
             $table->string('slug');
+            $table->foreignId('categorie_permission_id')->constrained('categorie_permissions');
+            /* $table->unsignedBigInteger('categorie_permission_id');
+            $table->foreign('categorie_permission_id')
+                ->references('id') // categorie_permission_id
+                ->on('categorie_permissions')
+                ->onDelete('cascade'); */
             $table->timestamps();
 
             $table->unique(['name', 'guard_name']);

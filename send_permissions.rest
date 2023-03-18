@@ -1,0 +1,11 @@
+
+
+
+
+
+
+
+
+
+### send permissions
+GET http://localhost:8002/api/mikerinos

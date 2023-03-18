@@ -65,11 +65,11 @@ class UserController extends Controller
                 'errors'=>$validator->errors()
             ],422);
         }
-        $user = new User();
+        /* $user = new User();
         $user->name = $data['name'];
         $user->email = $data['email'];
-        $user->password = bcrypt($data['password']);
-        if($user->save()){
+        $user->password = bcrypt($data['password']); */
+        if(User::create($data)){
             return ['status'=>true];
         }
         return ['status'=>false];

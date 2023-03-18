@@ -1,5 +1,7 @@
+### GET ALL ROLES
+GET http://localhost:8002/api/roles
 ### GET ALL USERS
-GET http://localhost:8000/api/roles
+GET http://localhost:8002/api/users
 ### ADD NEW USER
 POST http://localhost:8000/api/users
 Content-Type: application/json
@@ -7,7 +9,8 @@ Content-Type: application/json
 {
     "name":"Adebayo",
     "email":"Adebayo@Ishola.com",
-    "password":"123456789"
+    "password":"123456789",
+    "roles":1
 }
 
 ### for permissions
