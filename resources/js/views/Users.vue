@@ -198,7 +198,7 @@ import ProperModal from "../components/ProperModal.vue"
     const getAllUsers = ()=>{
         axios.get("api/users",{params:tData}).then((res)=>{
             let content = res.data.users
-            //console.log("Valeur de content:",content)
+            console.log("Valeur de content:",content)
             //console.log("Valeur de res:",res.data.users)
             users.value = res.data.users.data
             configPagination(content)

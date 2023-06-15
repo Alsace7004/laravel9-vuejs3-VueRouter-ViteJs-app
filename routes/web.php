@@ -15,9 +15,9 @@ use Spatie\Permission\Models\Permission;
 |
 */
 
-/* Route::get('/{all}', function () {
+Route::get('/{all}', function () {
     return view('welcome');
-})->where('all','.*'); */
+})->where('all','.*'); 
 
 Route::get('/permi',function(){
     DB::SELECT("DELETE FROM permissions");
