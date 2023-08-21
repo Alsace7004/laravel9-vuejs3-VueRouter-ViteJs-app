@@ -8,18 +8,22 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 </head>
 <body>
+    {{-- <div style="border:1px solid red;width:100%;">
+        <div style="background-color:bisque;display: inline-block;width:50%">left</div>
+        <div style="background-color:gray;display: inline-block;width:50%;vertical-align: end;">right</div>
+    </div> --}}
     <div class="invoice-box">
         <table class="table table-bordered" cellpadding="0" cellspacing="0">
             <tr class="top">
                 <td colspan="2">
-                    <table>
-                        <tr style="width:100%">
-                            <td class="title" style="width:100px;color:red">
+                    <table class="table table-bordered">
+                        <tr style="">
+                            <td class="title" style="color:red">
                                 le logo
                                 {{-- <img src="{{ asset('images/logo.png') }}" style="width: 100%; max-width: 88px" /> --}}
                             </td>
-                            <td style="width:330px"></td>
-                            <td style="text-align:start">
+                           
+                            <td style="">
                                 Invoice #: {{ $invoiceData['invoice_id'] }}<br />
                                 Created: {{ $invoiceData['creation_date'] }}
                             </td>
@@ -29,7 +33,7 @@
             </tr>
             <tr class="information">
                 <td colspan="2">
-                    <table>
+                    <table class="table table-bordered">>
                         <tr>
                             <td>
                                 Godaddy, LLC.<br />
@@ -46,16 +50,16 @@
                 </td>
             </tr>
             <tr class="heading">
-                <td>Payment Method</td>
-                <td># Transaction Id</td>
+                <td style="background-color: gray">Payment Method</td>
+                <td style="background-color: gray"># Transaction Id</td>
             </tr>
             <tr class="details">
                 <td>{{ $invoiceData['payment_method'] }}</td>
                 <td>{{ $invoiceData['transaction_id'] }}</td>
             </tr>
             <tr class="heading">
-                <td>Item</td>
-                <td>Amount</td>
+                <td style="background-color: gray">Item</td>
+                <td style="background-color: gray">Amount</td>
             </tr>
             @foreach($invoiceItems as $invoiceItem)
                 <tr class="item @if($loop->last) last @endif">
