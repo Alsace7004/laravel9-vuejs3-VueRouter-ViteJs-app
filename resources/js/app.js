@@ -65,6 +65,5 @@ import 'vue-loading-overlay/dist/css/index.css';
 const app = createApp(App)
 app.component('GDialog',GDialog) //Here is a Global Component
 app.use(useLoading)
-   .use(VueHtmlToPaper)
    .use(router)
    .mount("#app");
