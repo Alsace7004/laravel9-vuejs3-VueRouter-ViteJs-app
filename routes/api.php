@@ -30,6 +30,16 @@ Route::apiResource('users',UserController::class);
 //Route::get('users/expor',[UserController::class,'exportUser']);
 Route::get("holla",[UserController::class,'exportUsers']);
 Route::apiResource('roles',RoleController::class);
+
+Route::post("export_pdf",[UserController::class,'exportPdf']);
+
+
+//previewPDF
+Route::get("previewPdf",[UserController::class,'previewPdf']);
+//previewBillPDF
+Route::get("previewBillPdf",[UserController::class,'previewBillPdf']);
+//working :  downloadPDF
+Route::get("downloadPdfMi",[UserController::class,'getPostPdf']);
 /*****************************************************/
 Route::get("mikerinos",function(){
     //88-48-28

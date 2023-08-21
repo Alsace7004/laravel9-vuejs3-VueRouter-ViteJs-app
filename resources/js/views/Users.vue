@@ -14,16 +14,19 @@
                             <option v-for="(pp,key) in perPage" :key="key" :value="pp">{{pp}}</option>
                         </select>
                         <button class="excel_export_btn" @click="export_to_excel">Excel</button>
+                        <button class="excel_export_btn" @click="previewPdf">Preview PDF</button>
+                        <button class="excel_export_btn" @click="previewBillPdf">Preview Bill PDF</button>
+                        <button class="excel_export_btn" @click="printPDF">download PDF</button>
                     </div>
                     <div class="search_btn">
                         <input type="text" class="input_control" v-model="tData.search" @input="getSearch" placeholder="Rechercher nom,prenom...">
                     </div>
                 </div>
                 <!-- Table Content Begin -->
-                <div class="data_box_content">
+                <div id="print-me" class="data_box_content">
                     <!-- The data box content -->
                     <v-table :columns="columns">
-                        <tbody>
+                        <tbody style="border:1px solid red">
                             <tr v-if="!users.length">Pas d'utilisateur disponible pour le moment</tr>
                             <tr v-for="(user,key) in users" :key="key">
                                 <td>{{key+=1}}</td>
@@ -108,6 +111,8 @@
             </GDialog>
             
             <!-- GDialog Modal Begin -->
+            <!-- SOURCE -->
+         
         </div>
 </template>
 
@@ -117,6 +122,9 @@ import {ref} from "vue"
 import vTable from "../components/vTable/vTable.vue"
 import Modal from "../components/Modal.vue"
 import ProperModal from "../components/ProperModal.vue"
+/*************************************************************/
+
+/*************************************************************/
     /****************GDialog*****Begin*****************/
     const dialogState = ref(false)
     let isModalVisible = ref(false)
@@ -244,6 +252,65 @@ import ProperModal from "../components/ProperModal.vue"
         })
     }
 
+  
+
+    //Download PDF
+    const printPDF = ()=>{
+        axios({
+                url: 'api/downloadPdfMi',
+                method: 'GET',
+                responseType: 'blob',
+                 Accept: 'application/pdf',
+            }).then((response) => {
+                var fileURL = window.URL.createObjectURL(
+                    new Blob([response.data], 
+                    )
+                );
+                var fileLink = document.createElement('a');
+                fileLink.href = fileURL;
+                fileLink.setAttribute('download', 'download_users.pdf');
+                document.body.appendChild(fileLink);
+                fileLink.click();
+            });            
+    }
+    //Preview PDF
+    const previewPdf = ()=>{
+        axios({
+                url: 'api/previewPdf',
+                method: 'GET',
+                responseType: 'blob',
+                 Accept: 'application/pdf',
+            }).then((response) => {
+                var fileURL = window.URL.createObjectURL(
+                    new Blob([response.data], 
+                    )
+                );
+                var fileLink = document.createElement('a');
+                fileLink.href = fileURL;
+                fileLink.setAttribute('target', '_blank');
+                document.body.appendChild(fileLink);
+                fileLink.click();
+            });            
+    }
+    const previewBillPdf = ()=>{
+        axios({
+                url: 'api/previewBillPdf',
+                method: 'GET',
+                responseType: 'blob',
+                 Accept: 'application/pdf',
+            }).then((response) => {
+                var fileURL = window.URL.createObjectURL(
+                    new Blob([response.data], 
+                    )
+                );
+                var fileLink = document.createElement('a');
+                fileLink.href = fileURL;
+                fileLink.setAttribute('target', '_blank');
+                document.body.appendChild(fileLink);
+                fileLink.click();
+            });            
+    }
+    //
     const deleteUser=(id)=>{
         Swal.fire({
             title: 'Etes-vous sûr?',

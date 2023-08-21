@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use PDF;
+use Illuminate\Support\Str;
 use App\Exports\UsersExport;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\App;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Validator;
 
@@ -142,6 +146,12 @@ class UserController extends Controller
 
             return Excel::download($export, 'users.xlsx');
     }
+    public function exportPdf(){
+        $html = "<h1>Hello</h1>";
+        Pdf::loadHTML($html)->setPaper('a4', 'landscape')->setWarnings(false)->save('myfile.pdf');
+    }
+
+    
 
     //See After : Clean Code
     public function index2(Request $request){
@@ -160,5 +170,49 @@ class UserController extends Controller
             })->orderBy('id','desc')
             ->paginate($length);
     
+    }
+
+    public function getPostPdf(){
+        $employee = User::all();
+        $pdf = PDF::loadView('posts.show', compact('employee'))
+                            ->setPaper('a4', 'portrait')
+                            ->setWarnings(false);
+        //return $pdf->stream();
+        // Lancement du téléchargement du fichier PDF
+        return $pdf->download(Str::slug('bebi').".pdf");
+    }
+
+    public function previewBillPdf(){
+
+        $invoiceItems = [
+            ['item' => 'Website Design', 'amount' => 50.50],
+            ['item' => 'Hosting (3 months)', 'amount' => 80.50],
+            ['item' => 'Domain (1 year)', 'amount' => 10.50]
+        ];
+        $invoiceData = [
+            'invoice_id' => 123,
+            'transaction_id' => 1234567,
+            'payment_method' => 'Paypal',
+            'creation_date' => date('M d, Y'),
+            'total_amount' => 141.50
+        ];
+
+        $pdf = PDF::loadView('posts.bill',compact('invoiceItems','invoiceData'))
+                            ->setPaper('a4','portrait')
+                            ->setWarnings(false);
+
+        return $pdf->stream();
+        
+    }
+    public function previewPdf(){
+
+        $employee = User::all();
+
+        $pdf = PDF::loadView('posts.show',compact('employee'))
+                            ->setPaper('a4','portrait')
+                            ->setWarnings(false);
+
+        return $pdf->stream();
+        
     }
 }
