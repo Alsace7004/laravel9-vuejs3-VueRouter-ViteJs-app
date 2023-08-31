@@ -1,3 +1,4 @@
+@foreach($employee ?? '' as $data)
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,3 +36,4 @@
     </div>
 </body>
 </html>
+@endforeach
