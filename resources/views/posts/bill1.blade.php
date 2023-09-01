@@ -26,23 +26,7 @@
 </head>
 <body>
     {{--
-        31-08-2023         
-        la soeur de mon ami Ethene se prostitue,
-        j'etais a ma devanture un matin quand j'ai vu un
-        homme la prendre dans ses main comme un pere de 
-        famille prendrait sa fille bien aimée dans ses mains,
-        mais ce n'etait pas le cas ici, le monsieur a clairement
-        des intentions purement sexuelles envers elle,
-        c'est le petit terrain des mecano qui est le lieu
-        où va se derouler le forfait,
-        Ayele est rentrée la première, le monsieur
-        avant de rentré a commencer par ouvrir sa ceinture
-        apres, j'ai fait quelque pour aller voir si je pouvais
-        ecouté quelque chose, je ne sais pas ce qu'elle a eu mais
-        on dirait une consequence de debutante et ses camarades
-        la rassurait que c'etais juste le debut, que avec le temps,
-        tout ira bien, et l'une disais qu'Ayele et elle deviendrait
-        des super copine
+        
         --}}
 
       {{-- <div>

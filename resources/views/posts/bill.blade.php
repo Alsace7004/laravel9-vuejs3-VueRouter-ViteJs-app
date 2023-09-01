@@ -13,12 +13,12 @@
   </head>
   <body>
     <div class="invoice p-3 mb-3">
-      <h5 class="text-center">Hello</h5>
-      <div class="row">
+      <h6 class="text-center">Reçu de paiement</h6>
+      <div class="row mb-5 mt-5">
         <div class="col-12">
           <h5>
-            <i class="fas fa-globe"></i> Corp, Inc.
-            <small class="float-right">Date: 2/10/2014</small>
+            <i class="fas fa-globe"></i> Ori.
+            <small class="float-right">Année scolaire: 2022-2023</small>
           </h5>
         </div>
       </div>
@@ -60,7 +60,7 @@
                       <td>Agbo Komlan</td>
                       <td>Feminin</td>
                       <td>CP2</td>
-                      <td>$64.50</td>
+                      <td class="ml-3">$64.50</td>
                     </tr>
             </tbody>
           </table>
@@ -70,12 +70,12 @@
       <div class="row">
       
         <div class="col-6" style="float: left; width: 25%;">
-            <p class="lead">Payment Methods:</p>
+            <p class="lead">Détails:</p>
             <p class="text-muted well well-sm shadow-none" style="margin-top: 10px;">
-                Etsy doostang zoodles
+                Payé le 31/08/2023, 00:26:52
             </p>
             <p class="text-muted well well-sm shadow-none" style="margin-top: 10px;">
-                ifttt zimbra.
+                signature:
             </p>
         </div>
         
@@ -84,19 +84,19 @@
               <table class="table">
                 <tbody>
                   <tr>
-                    <th style="width:50%">Subtotal:</th>
+                    <th style="width:50%">Scolarité:</th>
                     <td>$250.30</td>
                   </tr>
                   <tr>
-                    <th>Tax (9.3%)</th>
+                    <th>Montant Payé:</th>
                     <td>$10.34</td>
                   </tr>
                   <tr>
-                    <th>Shipping:</th>
+                    <th>Total Payé:</th>
                     <td>$5.80</td>
                   </tr>
                   <tr>
-                    <th>Total:</th>
+                    <th>Reste:</th>
                     <td>$265.24</td>
                   </tr>
                 </tbody>
