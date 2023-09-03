@@ -204,6 +204,16 @@ class UserController extends Controller
         return $pdf->stream();
         
     }
+    public function previewBulletin(){
+
+
+        $pdf = PDF::loadView('pdf.bulletin')
+                            ->setPaper('a4','portrait')
+                            ->setWarnings(false);
+
+        return $pdf->stream();
+        
+    }
     public function previewPdf(){
 
         $employee = User::all();

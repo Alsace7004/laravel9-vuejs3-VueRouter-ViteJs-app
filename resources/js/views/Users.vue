@@ -16,6 +16,7 @@
                         <button class="excel_export_btn" @click="export_to_excel">Excel</button>
                         <button class="excel_export_btn" @click="previewPdf">Preview PDF</button>
                         <button class="excel_export_btn" @click="previewBillPdf">Preview Bill PDF</button>
+                        <button class="excel_export_btn" @click="previewBulletinPdf">Preview Bulletin Eleve</button>
                         <button class="excel_export_btn" @click="printPDF">download PDF</button>
                     </div>
                     <div class="search_btn">
@@ -295,6 +296,24 @@ import ProperModal from "../components/ProperModal.vue"
     const previewBillPdf = ()=>{
         axios({
                 url: 'api/previewBillPdf',
+                method: 'GET',
+                responseType: 'blob',
+                 Accept: 'application/pdf',
+            }).then((response) => {
+                var fileURL = window.URL.createObjectURL(
+                    new Blob([response.data], 
+                    )
+                );
+                var fileLink = document.createElement('a');
+                fileLink.href = fileURL;
+                fileLink.setAttribute('target', '_blank');
+                document.body.appendChild(fileLink);
+                fileLink.click();
+            });            
+    }
+    const previewBulletinPdf = ()=>{
+        axios({
+                url: 'api/previewBulletinEleve',
                 method: 'GET',
                 responseType: 'blob',
                  Accept: 'application/pdf',

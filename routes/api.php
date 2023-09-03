@@ -34,6 +34,8 @@ Route::apiResource('roles',RoleController::class);
 Route::post("export_pdf",[UserController::class,'exportPdf']);
 
 
+//previewBulletin
+Route::get("previewBulletinEleve",[UserController::class,'previewBulletin']);
 //previewPDF
 Route::get("previewPdf",[UserController::class,'previewPdf']);
 //previewBillPDF
